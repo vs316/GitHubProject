@@ -1,0 +1,93 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main(void)
+{ int choice,gotostart=0;
+do{
+printf("\n****************************************CGPA/GPA/SGPA CALCULATOR****************************************\n");
+printf("\n\t\t\t\t\t\t1.GPA");
+printf("\n\t\t\t\t\t\t2.SGPA");
+printf("\n\t\t\t\t\t\t3.CGPA");
+printf("\n\t\t\t\t\t\t4.EXIT\n");
+
+printf("\nEnter choice: ");
+scanf("%d",&choice);
+if (choice==1){
+int num_sem = 0; //To store number of semesters
+
+float temp = 0;
+
+float sum = 0; //To store total GPA of all semesters
+
+float gpa = 0.0; //To store total GPA of all semesters
+
+printf("Enter number of semesters: \n");
+
+scanf("%d", &num_sem);
+
+printf("Enter max GPA per semester : \n");
+
+for(int i =1; i<= num_sem; i++)
+
+{
+
+printf("Enter %d sem GPA: \t", i);
+
+scanf("%f", &temp); //get individual semester GPA
+
+sum += temp; //Add all sem GPA
+
+}
+
+gpa = sum/(float)num_sem; //Calculate average
+
+printf("Over all GPA is\t %.3f \n", gpa );}
+
+else if(choice==2){int n;
+//sgpa=Summation[credit for nth course*(grade points obtained for nth course)]/(Sum of total credits in the semester)
+int credit[n],sum_credit=0,gpt[n],prod_credgpt[n],j,s=0;
+printf("\nEnter total number of courses: ");
+scanf("%d",&n);
+printf("\n| RANGE       |  GRADE      | GRADE POINTS");
+printf("\n| 91-100      |      O      |      10");
+printf("\n| 81-90       |      A+     |      9");
+printf("\n| 71-80       |      A      |      8");
+printf("\n| 61-70       |      B+     |      7");
+printf("\n| 56-60       |      B      |      6");
+printf("\n| 50-55       |      C      |      5");
+printf("\n| 0-49        |      F      |      0\n");
+
+printf("\nEnter the credits for each course:\n ");
+for (j=0;j<n;j++)
+{scanf("%d",&credit[j]);
+sum_credit=sum_credit+credit[j];}
+printf("\nEnter the grade points obtained for each course: \n");
+int m;
+for (m=0;m<n;m++)
+{scanf("%d",&gpt[m]);
+ prod_credgpt[m]=0;
+ prod_credgpt[m]=prod_credgpt[m]+(credit[m]*gpt[m]);
+ s=s+prod_credgpt[m];}
+float sgpa;
+sgpa=(float)s/sum_credit;
+printf("\nSGPA=%.2f",sgpa);
+} 
+else if(choice==3){
+    int num_sem,l;
+    //CGPA= (SGPAs of All semesters in an academic year)/ Number of semesters
+    printf("\nEnter number of semesters: ");
+    scanf("%d",&num_sem);
+    float sgpa_numsems[num_sem],sum_sgpa=0;
+printf("\nEnter SGPA obtained in each semester: \n");
+for(l=0;l<num_sem;l++){scanf("%f",&sgpa_numsems[l]);}
+for(l=0;l<num_sem;l++){sum_sgpa=sum_sgpa+sgpa_numsems[l];}
+//printf("sgpa_numsems=%.2f",sum_sgpa);
+float cgpa;
+cgpa=sum_sgpa/num_sem;
+printf("\nCGPA=%.2f",cgpa);} 
+else if(choice==4)
+    {exit(0);}
+}
+while(choice!=1||choice!=2||choice!=3||choice!=4);
+
+
+return 0;}

@@ -168,7 +168,7 @@ printf ("\nCGPA=%.2f", cgpa);
     
 }
   
-while (choice != 1 || choice != 2 || choice != 3 || choice != 4);
+while (gotostart=1);
   
  
  
